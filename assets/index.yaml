@@ -1,0 +1,24 @@
+apiVersion: v1
+entries:
+  tr-locale:
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/kube-version: '>= 1.16.0-0'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.7.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+    apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-12-05T13:12:50.866077+03:00"
+    description: Turkish Localization Extension for Rancher Manager
+    digest: 94b6cd1268d2cc234f641119cccb70fbe58f7f90d214868f3ba6676bcff5bbae
+    icon: https://raw.githubusercontent.com/enterprisecoding-ltd/rancher-extensions-tr-locale/main/pkg/tr-locale/tr-locale.svg
+    name: tr-locale
+    type: application
+    urls:
+    - assets/tr-locale/tr-locale-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-12-05T13:12:50.865823+03:00"
