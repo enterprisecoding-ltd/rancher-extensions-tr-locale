@@ -1,0 +1,5 @@
+plugin/package.json
+plugin/tr-locale-0.2.0.umd.min.1.js
+plugin/tr-locale-0.2.0.umd.min.1.js.map
+plugin/tr-locale-0.2.0.umd.min.js
+plugin/tr-locale-0.2.0.umd.min.js.map
