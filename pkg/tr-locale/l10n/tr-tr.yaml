@@ -204,9 +204,9 @@ nav:
     authMiddleware: Kimlik Doğrulama Ara Katmanı
     clusterNotFound: '{ clusterId } kümesi bulunamadı'
     productNotFound: '{ productNotFound } ürünü bulunamadı'
-    resourceNotFound: Kaynak türü { kaynak } bulunamadı
-    resourceListNotFound: Resource type { resource } not found, unable to display list
-    resourceIdNotFound: '{ fqid } kimliğine sahip kaynak { kaynak } bulunamadı, kaynak ayrıntıları görüntülenemiyor'
+    resourceNotFound: Kaynak türü { resource } bulunamadı
+    resourceListNotFound: Kaynak türü { resource } bulunamadı, liste görüntülenemiyor
+    resourceIdNotFound: '{ fqid } kimliğine sahip kaynak { resource } bulunamadı, kaynak ayrıntıları görüntülenemiyor'
     reload: Tekrar Yükle
     separator: veya
 
@@ -1112,33 +1112,33 @@ cis:
 
 cluster:
   addonChart:
-    rancher-vsphere-cpi: vSphere CPI Configuration
-    rancher-vsphere-csi: vSphere CSI Configuration
-    rke2-calico: Calico Configuration
-    rke2-calico-crd: Calico Configuration
-    rke2-canal: Canal Configuration
-    rke2-cilium: Cilium Configuration
-    rke2-coredns: CoreDNS Configuration
-    rke2-ingress-nginx: NGINX Ingress Configuration
-    rke2-kube-proxy: Kube Proxy Configuration
-    rke2-metrics-server: Metrics Server Configuration
-    rke2-multus: Multus Configuration
+    rancher-vsphere-cpi: vSphere CPI Yapılandırması
+    rancher-vsphere-csi: vSphere CSI Yapılandırması
+    rke2-calico: Calico Yapılandırması
+    rke2-calico-crd: Calico Yapılandırması
+    rke2-canal: Canal Yapılandırması
+    rke2-cilium: Cilium Yapılandırması
+    rke2-coredns: CoreDNS Yapılandırması
+    rke2-ingress-nginx: NGINX Ingress Yapılandırması
+    rke2-kube-proxy: Kube Proxy Yapılandırması
+    rke2-metrics-server: Metrik Sunucusu Yapılandırması
+    rke2-multus: Multus Yapılandırması
   agentEnvVars:
-    label: Agent Environment
-    detail: Add additional environment variables to the agent container.  This is most commonly useful for configuring a HTTP proxy.
-    keyLabel: Variable Name
+    label: Agent Ortamı
+    detail: Agent Konteyner ek ortam değişkenleri ekleyin. Bu en çok bir HTTP proxy'yi yapılandırmak için kullanışlıdır.
+    keyLabel: Değişken İsmi
   cloudProvider:
     aws:
       label: Amazon
     azure:
       label: Azure
     external:
-      label: External
+      label: Harici
     gcp:
       label: Google
     rancher-vsphere:
       label: vSphere
-      note: '<b>Important:</b> Configure the vSphere Cloud Provider and Storage Provider options in the Add-On Config tab.'
+      note: '<b>Önemli:</b> Eklenti Yapılandırması sekmesinde vSphere Bulut Sağlayıcısı ve Depolama Sağlayıcısı seçeneklerini yapılandırın.'
     harvester:
       label: Harvester
   copyConfig: KubeConfig'i Panoya kopyala
@@ -1146,102 +1146,102 @@ cluster:
   custom:
     nodeRole:
       label: Node Rolü
-      detail: Choose what roles the node will have in the cluster.  The cluster needs to have at least one node with each role.
-      warning: The cluster needs to have at least one node with each role to be usable.
+      detail: Node`un kümede hangi rollere sahip olacağını seçin. Kümenin her rolde en az bir node`a sahip olması gerekir.
+      warning: Kümenin kullanılabilir olması için her rolün bulunduğu en az bir node`a sahip olması gerekir.
     advanced:
-      label: Advanced
-      detail: Additional control over how the node will be registered.  These values will often need to be different for each node registered.
+      label: Gelişmiş
+      detail: Node`un nasıl kaydedileceği konusunda ek kontrol. Bu değerlerin genellikle kayıtlı her node için farklı olması gerekir.
       nodeName: Node Adı
-      publicIp: Node Public IP
-      privateIp: Node Private IP
+      publicIp: Node Genel IP`si
+      privateIp: Node Özel IP`si
       nodeLabel:
         title: Node Etiketleri
         label: Etiket Ekle
     registrationCommand:
-      label: Registration Command
-      linuxDetail: Run this command on each of the existing Linux machines you want to register.
-      windowsDetail: Run this command in PowerShell on each of the existing Windows machines you want to register. Windows nodes can only be workers.
-      windowsNotReady: The cluster must be up and running with Linux etcd, control plane, and worker nodes before the registration command for adding Windows workers will display.
+      label: Kayıt Komutu
+      linuxDetail: Bu komutu, kaydetmek istediğiniz mevcut Linux makinelerinin her birinde çalıştırın.
+      windowsDetail: Bu komutu, kaydetmek istediğiniz mevcut Windows makinelerinin her birinde PowerShell'de çalıştırın. Windows nodeları yalnızca işçi olabilir.
+      windowsNotReady: Windows çalışanlarını eklemeye yönelik kayıt komutunun görüntülenmesinden önce kümenin Linux vbd, kontrol düzlemi ve işçi node`larla çalışır durumda olması gerekir.
       windowsWarning: Workload pods, including some deployed by Rancher charts, will be scheduled on both Linux and Windows nodes by default. Edit NodeSelector in the chart to direct them to be placed onto a compatible node.
-      windowsDeprecatedForRKE1: Windows support is being deprecated for RKE1. We suggest migrating to RKE2.
-      insecure: "Insecure: Select this to skip TLS verification if your server has a self-signed certificate."
+      windowsDeprecatedForRKE1: RKE1 için Windows desteği kullanımdan kaldırılıyor. RKE2'ye geçmenizi öneririz.
+      insecure: "Güvensiz: Sunucunuzun kendinden imzalı bir sertifikası varsa TLS doğrulamasını atlamak için bunu seçin."
   credential:
     banner:
       createCredential: |-
         {length, plural,
-          =0 {First you'll need to create a credential to talk to the cloud provider}
-          other {Ok, Let's create a new credential}
+          =0 {Öncelikle bulut sağlayıcısıyla konuşmak için bir kimlik bilgisi oluşturmanız gerekecek}
+          other {Tamam, yeni bir kimlik bilgisi oluşturalım}
         }
     selectExisting:
-      label: Select Existing
+      label: Mevcut'u Seçin
     select:
       option:
         new: Yeni oluştur...
-        none: Select a credential...
+        none: Bir kimlik bilgisi seçin...
     aws:
       accessKey:
         label: Erişim Anahtarı
         placeholder: AWS Erişim Anahtarınız
       defaultRegion:
-        help: The default region to use when creating clusters.  Also contacted to verify that this credential works.
-        label: Default Region
+        help: Kümeler oluştururken kullanılacak varsayılan bölge. Ayrıca bu kimlik bilgilerinin işe yaradığını doğrulamak için iletişime geçildi.
+        label: Varsayılan Bölge
       secretKey:
-        label: Secret Key
-        placeholder: Your AWS Secret Key
+        label: Gizli Anahtar
+        placeholder: AWS Gizli Anahtarınız
     azure:
       clientId:
-        label: Client ID
+        label: İstemci ID
       clientSecret:
-        label: Client Secret
+        label: İstemci Sırrı
       environment:
-        label: Environment
+        label: Ortam
       subscriptionId:
-        label: Subscription ID
+        label: Abonelik ID
       tenantId:
-        label: Tenant ID
+        label: Kiracı ID
     digitalocean:
       accessToken:
-        help: Paste in a Personal Access Token from the DigitalOcean <a href="https://cloud.digitalocean.com/settings/api/tokens" target="_blank" rel="noopener noreferrer nofollow">Applications & API</a> screen.
-        label: Access Token
-        placeholder: Your DigitalOcean API Access Token
-    label: Cloud Credential
+        help: DigitalOcean <a href="https://cloud.digitalocean.com/settings/api/tokens" target="_blank" rel="noopener noreferrer nofollow">Uygulamaları ve API</a> ekranından Kişisel Erişim Jetonu yapıştırın.
+        label: Erişim Jetonu
+        placeholder: DigitalOcean API Erişim Jetonunuz
+    label: Bulut Kimlik Bilgileri
     linode:
       accessToken:
-        help: Paste in a Personal Access Token from the Linode <a href="https://cloud.linode.com/profile/tokens" target="_blank" rel="noopener noreferrer nofollow">API Tokens</a> screen.
-        label: Access Token
-        placeholder: Your Linode API Access Token
+        help: Linode <a href="https://cloud.linode.com/profile/tokens" target="_blank" rel="noopener noreferrer nofollow">API Jetonu</a> ekranından bir Kişisel Erişim Jetonu yapıştırın.
+        label: Erişim Jetonu
+        placeholder: Linode API Erişim Jetonunuz
     pnap:
       clientIdentifier:
-        label: Client ID
-        placeholder: Your Client ID
+        label: İstemci ID
+        placeholder: İstemci ID`iniz
       clientSecret:
-        help: From <a href="https://bmc.phoenixnap.com/credentials/" target="_blank" rel="nofollow noreferrer noopener">phoenixNAP BMC Portal</a> API Credentials
-        label: Client Secret
-        placeholder: Your Client Secret
+        help: <a href="https://bmc.phoenixnap.com/credentials/" target="_blank" rel="nofollow noreferrer noopener">phoenixNAP BMC Portalı</a> API Kimlik Bilgilerinden
+        label: Müşteri Sırrı
+        placeholder: Müşteri Sırrınız
     name:
-      label: Credential Name
-      placeholder: Name for this credential (optional)
+      label: Kimlik Bilgisi Adı
+      placeholder: Bu kimlik bilgisinin adı (isteğe bağlı)
     s3:
       accessKey:
         label: Erişim Anahtarı
         placeholder: API Erişim Anahtarınız
       defaultRegion:
-        label: Default Region
-        placeholder: "Optional: The default region to use"
+        label: Varsayılan Bölge
+        placeholder: "İsteğe bağlı: Kullanılacak varsayılan bölge"
       defaultBucket:
-        label: Default Bucket
-        placeholder: "Optional: The default bucket to use"
+        label: Varsayılan Buket
+        placeholder: "İsteğe bağlı: Kullanılacak varsayılan buket"
       defaultEndpoint:
         label: Varsayılan Uç Nokta
-        placeholder: "Optional: The default endpoint to use"
+        placeholder: "İsteğe bağlı: Kullanılacak varsayılan uç nokta"
       defaultFolder:
-        label: Default Folder
-        placeholder: "Optional: The default folder to use"
+        label: Varsayılan Klasör
+        placeholder: "İsteğe bağlı: Kullanılacak varsayılan klasör"
       defaultEndpointCA:
-        label: Default Endpoint CA Cert
-        placeholder: "Optional: The default CA certificate to use to verify the endpoint"
+        label: Varsayılan Uç Nokta CA Sertifikası
+        placeholder: "İsteğe bağlı: Uç noktayı doğrulamak için kullanılacak varsayılan CA sertifikası"
       defaultSkipSSLVerify:
-        label: Accept any certificate (insecure)
+        label: Herhangi bir sertifikayı kabul edin (güvenli değil)
       secretKey:
         label: SecretKey
         placeholder: API Gizli Anahtarınız
@@ -2767,7 +2767,7 @@ landing:
     cpuUsed: Kullanılan CPU
     memoryUsed: Kullanılan Hafıza
   seeWhatsNew: Bu sürümdeki iyileştirmeler ve yeni özellikler hakkında daha fazla bilgi edinin.
-  whatsNewLink: "What's new in 2.8"
+  whatsNewLink: "Yenilikler"
   learnMore: Daha fazla bilgi edin
   support: Destek
   community:
